@@ -57,6 +57,7 @@ $(document).ready(function() {
           text: TITLE,
           fontFamily: "Arial, sans-serif",
           fontSize: 18,
+          fontColor: '#000'
         },
         legend: {
           display: SHOW_LEGEND,
