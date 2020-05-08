@@ -88,7 +88,7 @@ $(document).ready(function() {
             },
             ticks: {
               callback: function(value, index, values) {
-                return value.toLocaleString()
+                return '$' + value.toLocaleString()
               }
             }
           }]
