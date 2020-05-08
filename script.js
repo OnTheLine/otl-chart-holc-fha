@@ -55,7 +55,8 @@ $(document).ready(function() {
         title: {
           display: true,
           text: TITLE,
-          fontSize: 14,
+          fontFamily: "Arial, sans-serif",
+          fontSize: 18,
         },
         legend: {
           display: SHOW_LEGEND,
@@ -102,7 +103,7 @@ $(document).ready(function() {
         },
         plugins: {
           colorschemes: {
-            scheme: 'brewer.SetOne9'
+            scheme: 'brewer.SetOne9'  // https://nagix.github.io/chartjs-plugin-colorschemes/
           }
         }
       }
