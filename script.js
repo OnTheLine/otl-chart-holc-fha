@@ -10,7 +10,7 @@ $(document).ready(function() {
 
   // Optionally, which column contains color names for the series?
   // If not specified, will apply default color scheme
-  var COLORS = 'color';
+  var COLORS = '';
 
   var X_AXIS = 'Year';  // x-axis label and label in tooltip
   var Y_AXIS = 'Millions of Dollars'; // y-axis label and label in tooltip
@@ -102,7 +102,7 @@ $(document).ready(function() {
         },
         plugins: {
           colorschemes: {
-            scheme: 'brewer.Paired12'
+            scheme: 'brewer.SetOne9'
           }
         }
       }
