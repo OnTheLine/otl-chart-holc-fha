@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  var TITLE = 'Value of HOLC Mortgages and FHA-Insured Loans and Mortgages, 1933-48';
+  var TITLE = 'Value of HOLC Mortgages and FHA-Insured Loans by Year, 1933-48';
 
   // Which column names contain data points?
   var X_LABELS = ['1933','1934','1935','1936','1937','1938','1939','1940','1941','1942','1943','1944','1945','1946','1947','1948'];
