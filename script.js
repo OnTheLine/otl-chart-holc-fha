@@ -1,55 +1,43 @@
+var TITLE = 'Value of HOLC Mortgages and FHA-Insured Loans by Year, 1933-48';
+
+var X_AXIS = 'Year';  // x-axis label and label in tooltip
+var Y_AXIS = 'Millions of Dollars'; // y-axis label and label in tooltip
+
+var BEGIN_AT_ZERO = false;  // Should x-axis start from 0? `true` or `false`
+
+var SHOW_GRID = true; // `true` to show the grid, `false` to hide
+var SHOW_LEGEND = true; // `true` to show the legend, `false` to hide
+
+
 $(document).ready(function() {
 
-  var TITLE = 'Value of HOLC Mortgages and FHA-Insured Loans by Year, 1933-48';
-
-  // Which column names contain data points?
-  var X_LABELS = ['1933','1934','1935','1936','1937','1938','1939','1940','1941','1942','1943','1944','1945','1946','1947','1948'];
-
-  // Which column name contains names (labels) for each series?
-  var NAMES = 'names';
-
-  // Optionally, which column contains color names for the series?
-  // If not specified, will apply default color scheme
-  var COLORS = '';
-
-  var X_AXIS = 'Year';  // x-axis label and label in tooltip
-  var Y_AXIS = 'Millions of Dollars'; // y-axis label and label in tooltip
-
-  var SHOW_GRID = true; // `true` to show the grid, `false` to hide
-  var SHOW_LEGEND = true; // `true` to show the legend, `false` to hide
-
   // Read data file and create a chart
-  d3.csv('data.csv').then(function(rows) {
+  $.get('./data.csv', function(csvString) {
 
-    var datasets = rows.map(function(row) {
+    var data = Papa.parse(csvString).data;
+    var timeLabels = data.slice(1).map(function(row) { return row[0]; });
 
-      var dataset = {
-        label: row[NAMES],
-        fill: false,
-        data: X_LABELS.map(function(t) { return row[t] })
-      }
+    var datasets = [];
+    for (var i = 1; i < data[0].length; i++) {
+      datasets.push(
+        {
+          label: data[0][i], // column name
+          data: data.slice(1).map(function(row) {return row[i]}), // data in that column
+          fill: false // `true` for area charts, `false` for regular line charts
+        }
+      )
+    }
 
-      if (row[COLORS]) {
-        dataset.backgroundColor = row[COLORS];
-        dataset.borderColor = row[COLORS];
-        dataset.pointBackgroundColor = row[COLORS];
-        dataset.pointBorderColor = row[COLORS];
-      }
-
-      return dataset;
-
-    });
-
-		var lineChartData = {
-      labels: X_LABELS,
-			datasets: datasets
-    };
-
-    var ctx = document.getElementById('container').getContext('2d');
+    // Get container for the chart
+    var ctx = document.getElementById('chart-container').getContext('2d');
 
     new Chart(ctx, {
       type: 'line',
-      data: lineChartData,
+
+      data: {
+        labels: timeLabels,
+        datasets: datasets,
+      },
 
       options: {
         title: {
@@ -62,6 +50,7 @@ $(document).ready(function() {
         legend: {
           display: SHOW_LEGEND,
         },
+        maintainAspectRatio: false,
         scales: {
           xAxes: [{
             scaleLabel: {
@@ -87,8 +76,9 @@ $(document).ready(function() {
               display: SHOW_GRID,
             },
             ticks: {
+              beginAtZero: BEGIN_AT_ZERO,
               callback: function(value, index, values) {
-                return '$' + value.toLocaleString()
+                return '$' + value.toLocaleString()   // add prefix $ dollar sign
               }
             }
           }]

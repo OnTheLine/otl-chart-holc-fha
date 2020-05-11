@@ -14,3 +14,7 @@ Federal Housing Administration, Fifteenth Annual Report of the Federal Housing A
 Note that chart compares HOLC mortgages versus all types of FHA-insured loans and mortgages. The majority of FHA is home mortgage insurance, but the total also includes property improvements and rental housing, which can be disaggregated in the source table.
 
 Also, note that the HOLC data above differs from US Federal Home Loan Bank Board, Annual Report: Federal Home Loan Bank Board (Washington, D.C.: Government Printing Office, 1941), https://catalog.hathitrust.org/Record/008441059, Chart XIX: Home Mortgage Lending Activity (including HOLC), p. 40.
+
+## Create your own
+
+Data Visualization for All, http://datavizforall.org
