@@ -1,9 +1,9 @@
 # otl-chart-holc-fha
 
-Chart.js line chart on HOLC and FHA funds 1933-48 for On The Line book http://onthline.trincoll.edu. Developed by Ilya Ilyankou and Jack Dougherty
+Datawrapper line chart on HOLC and FHA funds 1933-48 for On The Line book http://onthline.trincoll.edu by Jack Dougherty and contributors
 
 ## View online
-https://ontheline.github.io/otl-chart-holc-fha/
+https://datawrapper.dwcdn.net/PMDj9/2/
 
 ## Sources
 
